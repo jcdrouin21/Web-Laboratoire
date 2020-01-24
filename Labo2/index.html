@@ -30,7 +30,6 @@
 
         request.onloadend = () => {
             var data = JSON.parse(request.response);
-            console.log(typeof data);
             for(var i = 0; i < data["results"].length; i++){
                 arrData.push(data["results"][i]);
             }
