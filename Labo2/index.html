@@ -17,7 +17,6 @@
     </div>
 <script>
     var indexAnswer = 0;
-    var data;
     var arrData = [];
     var numResult = 0;
 
@@ -30,7 +29,7 @@
         request.send();
 
         request.onloadend = () => {
-            data = JSON.parse(request.response);
+            var data = JSON.parse(request.response);
             console.log(typeof data);
             for(var i = 0; i < data["results"].length; i++){
                 arrData.push(data["results"][i]);
@@ -41,6 +40,7 @@
 
     function autoComplete(response){
         document.getElementById('input').value = response.innerText;
+        input();
     }
 
     function input() {
@@ -50,29 +50,37 @@
 
         indexAnswer = 0;
         numResult = 0;
-        var uniqueResult = false;
         results.innerHTML = '';
 
         for (var i in arrData) {
             if(input == arrData[i]['name']){
-                uniqueResult = true;
-                numResult = 1;
+                displayUniqueCaracterInfo(arrData[i]);
             }
             else if (arrData[i]['name'].search(re) != -1) {
-                results.innerHTML += "<div class='results' onclick='autoComplete(this)'>" + arrData[i]['name'] + "</div>";
+                displayMultipleCaracterInfo(arrData[i]['name']);
                 numResult++;
             }
         }
-
-        if (uniqueResult){
-            results.innerHTML = '';
-        }
-        else{
-            console.log(indexAnswer);
-            results.childNodes[indexAnswer].style = "background-color: grey;";
-        }
+        results.childNodes[0].style = "background-color: grey;";
     }
 
+
+    function displayUniqueCaracterInfo(caracterInfo){
+        document.getElementById('result').innerHTML =
+            "<h1 class='center'>" + caracterInfo['name'] + "</h1>" +
+            "<h2 class='center'>height : " + caracterInfo['height'] + "</h2>" +
+            "<h2 class='center'>mass : " + caracterInfo['mass'] + "</h2>" +
+            "<h2 class='center'>hair color : " + caracterInfo['hair_color'] + "</h2>" +
+            "<h2 class='center'>skin color : " + caracterInfo['skin_color'] + "</h2>" +
+            "<h2 class='center'>eye color : " + caracterInfo['eye_color'] + "</h2>" +
+            "<h2 class='center'>birth year : " + caracterInfo['birth_year'] + "</h2>" +
+            "<h2 class='center'>gender : " + caracterInfo['gender'] + "</h2>";
+    }
+
+
+    function displayMultipleCaracterInfo(caracterName){
+        document.getElementById('result').innerHTML += "<div class='results' onclick='autoComplete(this)'>" + caracterName + "</div>";
+    }
 
 
     document.addEventListener("keyup", function(event) {
@@ -80,6 +88,7 @@
         if (event.keyCode === 13) {
             document.getElementById('input').value = results.childNodes[indexAnswer].innerText;
             document.getElementById('result').innerHTML = '';
+            displayUniqueCaracterInfo(arrData[indexAnswer]);
         }
         else if(event.keyCode === 38 && indexAnswer > 0) {
             results.childNodes[indexAnswer].style = "background-color: white;";

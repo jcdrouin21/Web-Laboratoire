@@ -1,6 +1,10 @@
 
 .results:hover{
-    background-color: darkgrey;
+    background-color: darkgrey !important;
+}
+
+.center{
+    text-align: center;
 }
 
 .results{
