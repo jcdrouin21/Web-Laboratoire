@@ -16,32 +16,27 @@
         </div>
     </div>
 <script>
+    var indexAnswer = 0;
+    var data;
+    var arrData = [];
+    var numResult = 0;
 
-    var requestResponse;
-    var countries;
-    var countryName;
-    var data = [];
 
-    for(var i = 1; i < 8; i++){
-        var request = new XMLHttpRequest();
-        request.open('GET', 'http://api.worldbank.org/v2/country?page=' + i, true);
+
+    for(page = 1; page < 10; page++){
+        const request = new XMLHttpRequest();
+        const url='https://swapi.co/api/people/?page=' + page + '&format=json';
+        request.open("GET", url, true);
         request.send();
 
-        requestResponse = request.responseXML;
-        countries = requestResponse.getElementsByTagName("wb:country");
-        for(var i = 0; i < countries.length; i++) {
-            countryName = countries[i].childNodes[3].textContent;
-            data.push(countryName);
+        request.onloadend = () => {
+            data = JSON.parse(request.response);
+            console.log(typeof data);
+            for(var i = 0; i < data["results"].length; i++){
+                arrData.push(data["results"][i]);
+            }
         }
-        console.log(data.length);
-
-
     }
-
-
-    request.open('GET', 'http://api.worldbank.org/v2/country', true);
-    request.send();
-
 
 
     function autoComplete(response){
@@ -53,35 +48,50 @@
         var results = document.getElementById('result');
         var re = new RegExp(input, 'i');
 
+        indexAnswer = 0;
+        numResult = 0;
+        var uniqueResult = false;
         results.innerHTML = '';
 
-        var uniqueResult = false;
-        for (var i in data) {
-            if (data[i].search(re) != -1) {
-                if (data[i] == input){
-                    uniqueResult = true;
-                }
-                results.innerHTML += "<div class='results' onclick='autoComplete(this)' name=" + data[i] + ">" + data[i] + "</div>";
-
-                if(input.length > 0){
-                    results.firstChild.style = "background-color: lightgrey"
-                }
+        for (var i in arrData) {
+            if(input == arrData[i]['name']){
+                uniqueResult = true;
+                numResult = 1;
+            }
+            else if (arrData[i]['name'].search(re) != -1) {
+                results.innerHTML += "<div class='results' onclick='autoComplete(this)'>" + arrData[i]['name'] + "</div>";
+                numResult++;
             }
         }
+
         if (uniqueResult){
             results.innerHTML = '';
-
         }
-
+        else{
+            console.log(indexAnswer);
+            results.childNodes[indexAnswer].style = "background-color: grey;";
+        }
     }
+
+
 
     document.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-        console.log('enter');
-        document.getElementById('input').value = document.getElementById('result').firstChild.innerText;
-        document.getElementById('result').innerHTML = '';
-    }
-});
+        var results = document.getElementById('result');
+        if (event.keyCode === 13) {
+            document.getElementById('input').value = results.childNodes[indexAnswer].innerText;
+            document.getElementById('result').innerHTML = '';
+        }
+        else if(event.keyCode === 38 && indexAnswer > 0) {
+            results.childNodes[indexAnswer].style = "background-color: white;";
+            indexAnswer--;
+            results.childNodes[indexAnswer].style = "background-color: grey;";
+        }
+        else if(event.keyCode === 40 && indexAnswer < numResult) {
+            results.childNodes[indexAnswer].style = "background-color: white;";
+            indexAnswer++;
+            results.childNodes[indexAnswer].style = "background-color: grey;";
+        }
+    });
 
 
 </script>
