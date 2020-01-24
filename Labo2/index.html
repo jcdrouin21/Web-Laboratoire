@@ -60,7 +60,9 @@
                 numResult++;
             }
         }
-        results.childNodes[0].style = "background-color: grey;";
+        if(numResult > 0){
+            results.childNodes[0].style = "background-color: grey;";
+        }
     }
 
 
@@ -85,9 +87,11 @@
     document.addEventListener("keyup", function(event) {
         var results = document.getElementById('result');
         if (event.keyCode === 13) {
-            document.getElementById('input').value = results.childNodes[indexAnswer].innerText;
-            document.getElementById('result').innerHTML = '';
-            displayUniqueCaracterInfo(arrData[indexAnswer]);
+            if(results.getElementsByTagName('div').length != 0){
+                document.getElementById('input').value = results.childNodes[indexAnswer].innerText;
+                document.getElementById('result').innerHTML = '';
+                displayUniqueCaracterInfo(arrData[indexAnswer]);
+            }
         }
         else if(event.keyCode === 38 && indexAnswer > 0) {
             results.childNodes[indexAnswer].style = "background-color: white;";
