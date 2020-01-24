@@ -1,0 +1,89 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Search</title>
+</head>
+<body id="body">
+
+
+    <div id="search" onclick="input()">
+        <input placeholder="Search..." type="search" id="input" oninput="input()">
+        <div id="result">
+
+        </div>
+    </div>
+<script>
+
+    var requestResponse;
+    var countries;
+    var countryName;
+    var data = [];
+
+    for(var i = 1; i < 8; i++){
+        var request = new XMLHttpRequest();
+        request.open('GET', 'http://api.worldbank.org/v2/country?page=' + i, true);
+        request.send();
+
+        requestResponse = request.responseXML;
+        countries = requestResponse.getElementsByTagName("wb:country");
+        for(var i = 0; i < countries.length; i++) {
+            countryName = countries[i].childNodes[3].textContent;
+            data.push(countryName);
+        }
+        console.log(data.length);
+
+
+    }
+
+
+    request.open('GET', 'http://api.worldbank.org/v2/country', true);
+    request.send();
+
+
+
+    function autoComplete(response){
+        document.getElementById('input').value = response.innerText;
+    }
+
+    function input() {
+        var input = document.getElementById("input").value;
+        var results = document.getElementById('result');
+        var re = new RegExp(input, 'i');
+
+        results.innerHTML = '';
+
+        var uniqueResult = false;
+        for (var i in data) {
+            if (data[i].search(re) != -1) {
+                if (data[i] == input){
+                    uniqueResult = true;
+                }
+                results.innerHTML += "<div class='results' onclick='autoComplete(this)' name=" + data[i] + ">" + data[i] + "</div>";
+
+                if(input.length > 0){
+                    results.firstChild.style = "background-color: lightgrey"
+                }
+            }
+        }
+        if (uniqueResult){
+            results.innerHTML = '';
+
+        }
+
+    }
+
+    document.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        console.log('enter');
+        document.getElementById('input').value = document.getElementById('result').firstChild.innerText;
+        document.getElementById('result').innerHTML = '';
+    }
+});
+
+
+</script>
+</body>
+</html>
