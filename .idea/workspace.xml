@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b00ecbad-eba2-4e94-a28d-1f7a65f4fa22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Labo3/noms.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Labo3/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/Labo3/function.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Labo3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Labo3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Labo3/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Labo3/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,12 +55,24 @@
       <option name="presentableId" value="Default" />
       <updated>1579889982535</updated>
       <workItem from="1579889987785" duration="15212000" />
-      <workItem from="1580501207176" duration="5371000" />
+      <workItem from="1580501207176" duration="5547000" />
     </task>
+    <task id="LOCAL-00001" summary="Caline il avait une erreur">
+      <created>1580596514313</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580596514313</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Caline il avait une erreur" />
+    <option name="LAST_COMMIT_MESSAGE" value="Caline il avait une erreur" />
   </component>
   <component name="WindowStateProjectService">
     <state x="380" y="31" key="CommitChangelistDialog2" timestamp="1580596513790">
