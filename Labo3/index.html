@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="module" src="function.js"></script>
     <meta charset="UTF-8">
     <title>NotificationForm</title>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -10,12 +11,17 @@
 
 <div id="search">
     <input placeholder="Type here ..." type="search" id="input">
-    <button class="button" id="erreur" name="Erreur" onclick="notifRequest(this)">&#9940 Erreur</button>
-    <button class="button" id="succes" name="Succès" onclick="notifRequest(this)">&#9989 Succès</button>
-    <button class="button" id="info" name="Info" onclick="notifRequest(this)">&#10068 Info</button>
+    <button class="button" id="erreur" name="Erreur" >&#9940 Erreur</button>
+    <button class="button" id="succes" name="Succès">&#9989 Succès</button>
+    <button class="button" id="info" name="Info">&#10068 Info</button>
 </div>
 
+<script type="module">
+    import * as notif from './function.js';
+    notif.notification();
+</script>
+
 <div id="results"></div>
-<script src="app.js"></script>
+
 </body>
 </html>

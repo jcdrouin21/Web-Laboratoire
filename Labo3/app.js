@@ -1,8 +1,4 @@
-function notifRequest(button){
-    document.getElementById("results").innerHTML += `<div class='notif ${button.name}'><h1>` + button.name + "</h1><h3>" +
-        document.getElementById('input').value + "</h3>"
-    setTimeout(() => {
-        document.getElementById("results").childNodes[0].remove()
-    },3000);
-}
+import * as notif from './function.js';
+notif.notification();
+
 
