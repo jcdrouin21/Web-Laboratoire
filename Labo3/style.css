@@ -3,18 +3,28 @@
     text-align: center;
     margin-right: auto;
     margin-left: auto;
+
 }
 
 #erreur{
     background-color: red;
+    width: 100px;
+    height: 32px;
+    font-family: "Comic Sans MS";
 }
 
 #succes{
     background-color: #0d6e1e;
+    width: 100px;
+    height: 32px;
+    font-family: "Comic Sans MS";
 }
 
 #info{
     background-color: dodgerblue;
+    width: 100px;
+    height: 32px;
+    font-family: "Comic Sans MS";
 }
 
 .button{
@@ -48,10 +58,20 @@
 
 .Succès{
     border-color: #0d6e1e;
+    font-family: "Comic Sans MS";
 }
 .Erreur{
     border-color: red;
+    font-family: "Comic Sans MS";
 }
 .Info{
     border-color: dodgerblue;
+    font-family: "Comic Sans MS";
+}
+
+#input{
+    width: 300px;
+    height: 30px;
+    font-family: "Comic Sans MS";
+    text-align: center;
 }
