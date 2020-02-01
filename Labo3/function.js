@@ -1,5 +1,5 @@
 function notification() {
-    document.getElementById("erreur").addEventListener('click', () => {
+    document.getElementById("erreur").addEventListener("click", () => {
         document.getElementById("results").innerHTML += "<div class='notif Erreur'><h1> Erreur </h1><h3>" +
             document.getElementById('input').value + "</h3>"
         remove();
