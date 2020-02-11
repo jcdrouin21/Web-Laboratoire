@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>The Ultimate Task Manager</title>
+    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-    <h2>The Ultimate Task Manager</h2>
-    <form action="https://glo3102lab4.herokuapp.com/users" method="post">
-        <input type="text" placeholder="Entrer votre nom"/>
-        <button type="submit">Soumettre</button>
-    </form>
+<body onload="createUser()">
+    <h2 class="center">The Ultimate Task Manager</h2>
+    <textarea rows="8" cols="12" id="inputTask" placeholder="Entrer Vos Tâches" ></textarea>
+    <button onclick="addTask()" type="submit">Ajouter</button>
+
 </body>
 </html>
