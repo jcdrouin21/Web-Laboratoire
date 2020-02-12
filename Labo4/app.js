@@ -1,4 +1,5 @@
 var userId;
+var selectedTaskId;
 
 function createUser() {
     var requestOptions = {
@@ -8,6 +9,7 @@ function createUser() {
     fetch('https://glo3102lab4.herokuapp.com/users ', requestOptions)
         .then(response => response.text())
         .then(result => {
+            console.log(result);
             userId = JSON.parse(result).id;
         })
         .then(error => console.log('error', error));
@@ -15,6 +17,8 @@ function createUser() {
 
 function addTask(){
     var task = document.getElementById("inputTask").value;
+    document.getElementById("modifyButton").disabled = true;
+    document.getElementById("deleteButton").disabled = true;
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -30,7 +34,7 @@ function addTask(){
     fetch("https://glo3102lab4.herokuapp.com/" + userId + "/tasks", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
-        .then( () => getTasks() )
+        .then(() => getTasks() )
         .catch(error => console.log('error', error));
 
 }
@@ -47,7 +51,7 @@ function getTasks(){
             document.getElementById("tasksList").innerHTML = '';
             var results = JSON.parse(result).tasks;
             for (let i = 0; i < results.length; i++) {
-                document.getElementById("tasksList").innerHTML += "<div class='taskName' name='" + results[i].id + "'>" + results[i].name + "</div>"
+                document.getElementById("tasksList").innerHTML += "<div class='taskName' onclick='selectTask(" + JSON.stringify(results[i].id) + ", " + JSON.stringify(results[i].name) + ")' name='" + results[i].id + "'>" + results[i].name + "</div>"
             }
         })
         .catch(error => console.log('error', error));
@@ -56,8 +60,8 @@ function getTasks(){
 }
 
 function modifyTask(){
-    var taskId = document.getElementById("inputTask").name;
     var task = document.getElementById("inputTask").value;
+
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -70,21 +74,31 @@ function modifyTask(){
         redirect: 'follow'
     };
 
-    fetch("https://glo3102lab4.herokuapp.com/" + userId + "/tasks/" + taskId, requestOptions)
+    fetch("https://glo3102lab4.herokuapp.com/" + userId + "/tasks/" + selectedTaskId, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
+        .then( () => getTasks())
         .catch(error => console.log('error', error));
 }
 
 function deleteTask(){
-    var taskId = document.getElementById("inputTask").name;
+    document.getElementById("modifyButton").disabled = true;
+    document.getElementById("deleteButton").disabled = true;
     var requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
     };
 
-    fetch("https://glo3102lab4.herokuapp.com/" + userId + "/tasks/" + taskId, requestOptions)
+    fetch("https://glo3102lab4.herokuapp.com/" + userId + "/tasks/" + selectedTaskId, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
+        .then(() => getTasks())
         .catch(error => console.log('error', error));
+}
+
+function selectTask(taskId, taskName) {
+    selectedTaskId = taskId;
+    document.getElementById("inputTask").value = taskName;
+    document.getElementById("modifyButton").disabled = false;
+    document.getElementById("deleteButton").disabled = false;
 }

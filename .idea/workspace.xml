@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b00ecbad-eba2-4e94-a28d-1f7a65f4fa22" name="Default Changelist" comment="">
+    <list default="true" id="b00ecbad-eba2-4e94-a28d-1f7a65f4fa22" name="Default Changelist" comment="Caline il avait une erreur">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labo4/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Labo4/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labo4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Labo4/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labo4/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Labo4/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +33,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -56,6 +62,8 @@
       <updated>1579889982535</updated>
       <workItem from="1579889987785" duration="15212000" />
       <workItem from="1580501207176" duration="5547000" />
+      <workItem from="1581464444842" duration="7551000" />
+      <workItem from="1581520283858" duration="7239000" />
     </task>
     <task id="LOCAL-00001" summary="Caline il avait une erreur">
       <created>1580596514313</created>
@@ -75,9 +83,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Caline il avait une erreur" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="380" y="31" key="CommitChangelistDialog2" timestamp="1580596513790">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="380" y="16" key="CommitChangelistDialog2" timestamp="1581523022134">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="380" y="16" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1581523022134" />
     <state x="380" y="31" key="CommitChangelistDialog2/0.0.1536.864/-1920.97.1920.1080@0.0.1536.864" timestamp="1580596513790" />
     <state x="148" y="78" key="MergeDialog" timestamp="1580596461011">
       <screen x="0" y="0" width="1536" height="864" />
@@ -87,6 +96,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="481" y="152" key="MultipleFileMergeDialog/0.0.1536.864/-1920.97.1920.1080@0.0.1536.864" timestamp="1580596461019" />
+    <state x="277" y="56" key="SettingsEditor" timestamp="1581523076173">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1581523076173" />
     <state x="578" y="353" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580596503466">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

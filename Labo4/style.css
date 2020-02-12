@@ -17,3 +17,8 @@
     width: 90%;
     display: block;
 }
+
+.taskName:hover{
+    border-color: dodgerblue;
+    cursor: pointer;
+}
