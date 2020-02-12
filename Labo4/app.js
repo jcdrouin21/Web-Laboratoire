@@ -32,3 +32,50 @@ function addTask(){
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 }
+
+function getTasks(){
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+
+    fetch("https://glo3102lab4.herokuapp.com/" + userId + "/tasks", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+}
+
+function modifyTask(){
+    var taskId = document.getElementById("inputTask").name;
+    var task = document.getElementById("inputTask").value;
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({"name":task});
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    fetch("https://glo3102lab4.herokuapp.com/" + userId + "/tasks/" + taskId, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+function deleteTask(){
+    var taskId = document.getElementById("inputTask").name;
+    var requestOptions = {
+        method: 'DELETE',
+        redirect: 'follow'
+    };
+
+    fetch("https://glo3102lab4.herokuapp.com/" + userId + "/tasks/" + taskId, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
