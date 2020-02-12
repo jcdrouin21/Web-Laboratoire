@@ -30,7 +30,9 @@ function addTask(){
     fetch("https://glo3102lab4.herokuapp.com/" + userId + "/tasks", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
+        .then( () => getTasks() )
         .catch(error => console.log('error', error));
+
 }
 
 function getTasks(){
@@ -39,10 +41,17 @@ function getTasks(){
         redirect: 'follow'
     };
 
-    fetch("https://glo3102lab4.herokuapp.com/" + userId + "/tasks", requestOptions)
+     fetch("https://glo3102lab4.herokuapp.com/" + userId + "/tasks", requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
+        .then(result => {
+            document.getElementById("tasksList").innerHTML = '';
+            var results = JSON.parse(result).tasks;
+            for (let i = 0; i < results.length; i++) {
+                document.getElementById("tasksList").innerHTML += "<div class='taskName' name='" + results[i].id + "'>" + results[i].name + "</div>"
+            }
+        })
         .catch(error => console.log('error', error));
+
 
 }
 

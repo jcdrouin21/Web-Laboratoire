@@ -9,3 +9,11 @@
     margin:auto;
 
 }
+.taskName{
+    text-align: center;
+    font-size: x-large;
+    border: 1px solid grey;
+    margin: 2%;
+    width: 90%;
+    display: block;
+}
