@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b00ecbad-eba2-4e94-a28d-1f7a65f4fa22" name="Default Changelist" comment="Caline il avait une erreur">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labo5/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Labo5/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labo5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Labo5/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labo5/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Labo5/src/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +37,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vince\Documents\Ulaval\Web\Web-Laboratoire\Labo5\src" />
+    </key>
+  </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
@@ -61,7 +69,7 @@
       <workItem from="1581464444842" duration="7551000" />
       <workItem from="1581520283858" duration="7469000" />
       <workItem from="1581713364038" duration="121000" />
-      <workItem from="1582816300791" duration="515000" />
+      <workItem from="1582816300791" duration="1284000" />
     </task>
     <task id="LOCAL-00001" summary="Caline il avait une erreur">
       <created>1580596514313</created>
