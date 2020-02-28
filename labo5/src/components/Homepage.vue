@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-on:load="createUser">
+        <div>
             <h2 id="greetingTitle"> The Ultimate Task Manager </h2>
         </div>
         <div>
@@ -19,27 +19,30 @@
     export default {
         data() {
           return {
-              userId: undefined,
-              selectedTaskId: undefined,
-              isDisabled: undefined
+              userId: null,
+              selectedTaskId: null,
+              isDisabled: null
           }
+        },
+        mounted() {
+            this.createUser();
+            this.isDisabled = true;
         },
         methods: {
             createUser() {
-                this.isDisabled = true;
                 let requestOptions = {
                     method: 'POST',
                     redirect: 'follow'
                 };
+
                 fetch('https://glo3102lab4.herokuapp.com/users ', requestOptions)
                     .then(response => response.text())
                     .then(result => {
                         this.userId = JSON.parse(result).id;
                     })
-                    .then(error => console.log('error', error));
+                    .catch(error => console.log('error', error));
             },
             addTask() {
-                console.log(this.userId)
                 let task = document.getElementById("inputTask").value;
                 this.isDisabled = true;
                 let myHeaders = new Headers();
@@ -72,7 +75,9 @@
                         document.getElementById("tasksList").innerHTML = '';
                         let results = JSON.parse(result).tasks;
                         for (let i = 0; i < results.length; i++) {
-                            document.getElementById("tasksList").innerHTML += "<div class='taskName' onclick='this.selectTask(" + JSON.stringify(results[i].id) + ", " + JSON.stringify(results[i].name) + ")' name='" + results[i].id + "'>" + results[i].name + "</div>"
+                            console.log(JSON.stringify(results[i].id));
+                            document.getElementById("tasksList").innerHTML += "<div class='taskName' v-on:click='selectTask(" + JSON.stringify(results[i].id) + ", " + JSON.stringify(results[i].name) + ")' name='" + results[i].id + "'>" + results[i].name + "</div>";
+
                         }
                     })
                     .catch(error => console.log('error', error));
@@ -131,7 +136,7 @@
         width:100%;
         height: 30%;
         margin:auto;
-
+        min-width: 100%;
     }
     #buttons {
         text-align: left;
