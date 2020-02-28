@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b00ecbad-eba2-4e94-a28d-1f7a65f4fa22" name="Default Changelist" comment="Caline il avait une erreur">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labo4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Labo4/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo5/src/components/Homepage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/labo5/src/components/Homepage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +69,7 @@
       <workItem from="1581520283858" duration="7469000" />
       <workItem from="1581713364038" duration="121000" />
       <workItem from="1582816300791" duration="1651000" />
+      <workItem from="1582908034924" duration="1552000" />
     </task>
     <task id="LOCAL-00001" summary="Caline il avait une erreur">
       <created>1580596514313</created>
