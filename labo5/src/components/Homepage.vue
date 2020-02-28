@@ -8,8 +8,8 @@
         </div>
         <div id="buttons">
             <button v-on:click="addTask" type="submit">Ajouter</button>
-            <button v-on:click="modifyTask" type="submit" disabled>Modifier</button>
-            <button v-on:click="deleteTask" type="submit" disabled>Supprimer</button>
+            <button v-on:click="modifyTask" type="submit" :disabled="isDisabled">Modifier</button>
+            <button v-on:click="deleteTask" type="submit" :disabled="isDisabled">Supprimer</button>
         </div>
         <div id="tasksList"></div>
     </div>
@@ -17,13 +17,16 @@
 
 <script>
     export default {
-        name: "Homepage",
-        props: {
-          userId: String,
-          selectedTaskId: String
+        data() {
+          return {
+              userId: undefined,
+              selectedTaskId: undefined,
+              isDisabled: undefined
+          }
         },
         methods: {
-            createUser: function () {
+            createUser() {
+                this.isDisabled = true;
                 let requestOptions = {
                     method: 'POST',
                     redirect: 'follow'
@@ -31,15 +34,14 @@
                 fetch('https://glo3102lab4.herokuapp.com/users ', requestOptions)
                     .then(response => response.text())
                     .then(result => {
-                        console.log(result);
                         this.userId = JSON.parse(result).id;
                     })
                     .then(error => console.log('error', error));
             },
-            addTask: function () {
+            addTask() {
+                console.log(this.userId)
                 let task = document.getElementById("inputTask").value;
-                document.getElementById("modifyButton").disabled = true;
-                document.getElementById("deleteButton").disabled = true;
+                this.isDisabled = true;
                 let myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
 
@@ -55,10 +57,10 @@
                 fetch("https://glo3102lab4.herokuapp.com/" + this.userId + "/tasks", requestOptions)
                     .then(response => response.text())
                     .then(result => console.log(result))
-                    .then(() => getTasks() )
+                    .then(() => this.getTasks() )
                     .catch(error => console.log('error', error));
             },
-            getTasks: () => {
+            getTasks() {
                 let requestOptions = {
                     method: 'GET',
                     redirect: 'follow'
@@ -70,12 +72,12 @@
                         document.getElementById("tasksList").innerHTML = '';
                         let results = JSON.parse(result).tasks;
                         for (let i = 0; i < results.length; i++) {
-                            document.getElementById("tasksList").innerHTML += "<div class='taskName' onclick='selectTask(" + JSON.stringify(results[i].id) + ", " + JSON.stringify(results[i].name) + ")' name='" + results[i].id + "'>" + results[i].name + "</div>"
+                            document.getElementById("tasksList").innerHTML += "<div class='taskName' onclick='this.selectTask(" + JSON.stringify(results[i].id) + ", " + JSON.stringify(results[i].name) + ")' name='" + results[i].id + "'>" + results[i].name + "</div>"
                         }
                     })
                     .catch(error => console.log('error', error));
             },
-            modifyTask: function () {
+            modifyTask() {
                 let task = document.getElementById("inputTask").value;
 
                 let myHeaders = new Headers();
@@ -93,12 +95,11 @@
                 fetch("https://glo3102lab4.herokuapp.com/" + this.userId + "/tasks/" + this.selectedTaskId, requestOptions)
                     .then(response => response.text())
                     .then(result => console.log(result))
-                    .then( () => getTasks())
+                    .then( () => this.getTasks())
                     .catch(error => console.log('error', error));
             },
-            deleteTask: function () {
-                document.getElementById("modifyButton").disabled = true;
-                document.getElementById("deleteButton").disabled = true;
+            deleteTask() {
+                this.isDisabled = true;
                 let requestOptions = {
                     method: 'DELETE',
                     redirect: 'follow'
@@ -107,14 +108,13 @@
                 fetch("https://glo3102lab4.herokuapp.com/" + this.userId + "/tasks/" + this.selectedTaskId, requestOptions)
                     .then(response => response.text())
                     .then(result => console.log(result))
-                    .then(() => getTasks())
+                    .then(() => this.getTasks())
                     .catch(error => console.log('error', error));
             },
-            selectTask: function (taskId, taskName) {
+            selectTask(taskId, taskName) {
                 this.selectedTaskId = taskId;
                 document.getElementById("inputTask").value = taskName;
-                document.getElementById("modifyButton").disabled = false;
-                document.getElementById("deleteButton").disabled = false;
+                this.isDisabled = false;
             }
         }
     }
