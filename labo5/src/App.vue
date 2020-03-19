@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-
-    <homepage/>
+    <nav-menu> </nav-menu>
+    <router-view />
   </div>
 </template>
 
 <script>
-import HomePage from './components/Homepage'
+
+import Header from './components/Header'
 
 export default {
   name: 'App',
   components: {
-    "homepage": HomePage
+    "nav-menu": Header
   }
 }
 </script>
@@ -23,6 +24,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

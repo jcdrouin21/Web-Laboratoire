@@ -1,33 +1,22 @@
 <template>
-    <div>
-        <div>
-            <h2 id="greetingTitle"> The Ultimate Task Manager </h2>
+    <div id="example-1">
+        <router-link to="/ToDoList"><div class="taches" v-on:click="createUser"> <h2>+</h2> Nouvelle Session </div></router-link>
+        <div class="taches" v-for="user in usersId" :key="user.id">
+            {{ user.id }}
         </div>
-        <div>
-            <label for="inputTask"/><textarea rows="8" cols="12" id="inputTask" placeholder="Entrer Vos Tâches..."/>
-        </div>
-        <div id="buttons">
-            <button v-on:click="addTask" type="submit">Ajouter</button>
-            <button v-on:click="modifyTask" type="submit" :disabled="isDisabled">Modifier</button>
-            <button v-on:click="deleteTask" type="submit" :disabled="isDisabled">Supprimer</button>
-        </div>
-        <div id="tasksList"></div>
     </div>
 </template>
 
 <script>
+    import Vue from 'vue'
+
+    guy = new Vue({
+        data: {
+            usersId: []
+        }
+    })
     export default {
-        data() {
-          return {
-              userId: null,
-              selectedTaskId: null,
-              isDisabled: null
-          }
-        },
-        mounted() {
-            this.createUser();
-            this.isDisabled = true;
-        },
+        name: "Task",
         methods: {
             createUser() {
                 let requestOptions = {
@@ -35,128 +24,20 @@
                     redirect: 'follow'
                 };
 
-                fetch('https://glo3102lab4.herokuapp.com/users ', requestOptions)
+                fetch('https://glo3102lab4.herokuapp.com/users', requestOptions)
                     .then(response => response.text())
                     .then(result => {
-                        this.userId = JSON.parse(result).id;
-                    })
-                    .catch(error => console.log('error', error));
-            },
-            addTask() {
-                let task = document.getElementById("inputTask").value;
-                this.isDisabled = true;
-                let myHeaders = new Headers();
-                myHeaders.append("Content-Type", "application/json");
-
-                let raw = JSON.stringify({"name": task});
-
-                let requestOptions = {
-                    method: 'POST',
-                    headers: myHeaders,
-                    body: raw,
-                    redirect: 'follow'
-                };
-
-                fetch("https://glo3102lab4.herokuapp.com/" + this.userId + "/tasks", requestOptions)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .then(() => this.getTasks() )
-                    .catch(error => console.log('error', error));
-            },
-            getTasks() {
-                let requestOptions = {
-                    method: 'GET',
-                    redirect: 'follow'
-                };
-
-                fetch("https://glo3102lab4.herokuapp.com/" + this.userId + "/tasks", requestOptions)
-                    .then(response => response.text())
-                    .then(result => {
-                        document.getElementById("tasksList").innerHTML = '';
-                        let results = JSON.parse(result).tasks;
-                        for (let i = 0; i < results.length; i++) {
-                            console.log(JSON.stringify(results[i].id));
-                            document.getElementById("tasksList").innerHTML += "<div class='taskName' v-on:click='selectTask(" + JSON.stringify(results[i].id) + ", " + JSON.stringify(results[i].name) + ")' name='" + results[i].id + "'>" + results[i].name + "</div>";
-
-                        }
-                    })
-                    .catch(error => console.log('error', error));
-            },
-            modifyTask() {
-                let task = document.getElementById("inputTask").value;
-
-                let myHeaders = new Headers();
-                myHeaders.append("Content-Type", "application/json");
-
-                let raw = JSON.stringify({"name":task});
-
-                let requestOptions = {
-                    method: 'PUT',
-                    headers: myHeaders,
-                    body: raw,
-                    redirect: 'follow'
-                };
-
-                fetch("https://glo3102lab4.herokuapp.com/" + this.userId + "/tasks/" + this.selectedTaskId, requestOptions)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .then( () => this.getTasks())
-                    .catch(error => console.log('error', error));
-            },
-            deleteTask() {
-                this.isDisabled = true;
-                let requestOptions = {
-                    method: 'DELETE',
-                    redirect: 'follow'
-                };
-
-                fetch("https://glo3102lab4.herokuapp.com/" + this.userId + "/tasks/" + this.selectedTaskId, requestOptions)
-                    .then(response => response.text())
-                    .then(result => console.log(result))
-                    .then(() => this.getTasks())
-                    .catch(error => console.log('error', error));
-            },
-            selectTask(taskId, taskName) {
-                this.selectedTaskId = taskId;
-                document.getElementById("inputTask").value = taskName;
-                this.isDisabled = false;
+                        console.log(JSON.parse(result).id);
+                        this.usersId.push(JSON.parse(result).id);
+                    }).catch(error => console.log('error', error));
             }
         }
     }
-
+    export { guy };
 </script>
 
-<style>
-    #greetingTitle {
-        text-align: center;
-        margin: auto;
-        width:100%;
-    }
-    #inputTask{
-        width:100%;
-        height: 30%;
-        margin:auto;
-        min-width: 100%;
-    }
-    #buttons {
-        text-align: left;
-        margin: auto;
-    }
-    #tasksList {
-        height: 100%;
-    }
-
-    .taskName{
-        text-align: center;
-        font-size: x-large;
-        border: 1px solid grey;
-        margin: 2%;
-        width: 90%;
-        display: block;
-    }
-
-    .taskName:hover{
-        border-color: dodgerblue;
-        cursor: pointer;
+<style scoped>
+    .taches{
+        border: 1px black solid;
     }
 </style>

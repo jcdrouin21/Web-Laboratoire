@@ -6,29 +6,12 @@ let userId = "";
 
 const corsOptions = {
   origin: '*',
-  methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'UPDATE'],
+  methods: ['GET', 'PUT', 'POST', 'DELETE'],
   credentials: true
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello world')
-});
-
-app.post('/tasks', (req, res) => {
-  if(!req.body.name){
-    res.status(400).send('La tâche ne peut pas être vide!!')
-  }
-
-  const task = {
-    id: tasks.length + 1,
-    name: req.body.name
-  }
-  tasks.push(task);
-  res.send(task);
-});
 
 app.post('/', (req, res) => {
   userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -41,5 +24,48 @@ app.post('/', (req, res) => {
     res.status(200).send(userId);
   }
 });
+
+
+app.get("/tasks", (req, res) => {
+  res.send(tasks);
+});
+
+
+app.post('/tasks', (req, res) => {
+  if(!req.body.name){
+    res.status(400).send('La tâche ne peut pas être vide!!')
+  }
+  const task = {
+    id: tasks.length + 1,
+    name: req.body.name
+  };
+  tasks.push(task);
+  res.send(task);
+});
+
+
+app.put('/tasks/:id', (req, res) => {
+  const task = tasks.find(t => t.id === parseInt(req.params.id));
+
+  if(!task){
+    res.status(404).send("La tâche n'existe pas!")
+  }
+
+  task.name = req.body.name;
+  res.send(tasks);
+});
+
+
+app.delete('/tasks/:id', (req, res) => {
+  const task = tasks.find(t => t.id === parseInt(req.params.id));
+
+  if(!task) res.status(404).send("La tâche n'existe pas");
+
+  const index = tasks.indexOf(task);
+  tasks.splice(index, 1);
+
+  res.send(tasks);
+});
+
 
 app.listen(3000, () => console.log('Écoute au port 3000'));
