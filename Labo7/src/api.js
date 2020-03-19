@@ -6,7 +6,7 @@ const userId = createUser();
 // L'URL de base de l'api est stocké dans baseUrl
 const baseUrl = `http://localhost:3000/${userId}`;
 
-export const createUser = () => {
+function createUser(){
   return fetch(`http://localhost:3000/`, {
     method: 'POST',
     headers: {
