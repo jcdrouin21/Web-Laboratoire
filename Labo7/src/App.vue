@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Tasks from '@/components/Tasks'
+import Tasks from '@/components/Tasks';
 
 export default {
   name: 'app',
