@@ -1,10 +1,26 @@
 // Le fichier api.js comprend les méthodes CRUD pour communiquer avec l'API de taches fournies
 
 // On conserve l'id utilisateur dans une variable séparée pour facilement le changer
-const userId = '33f86d28-5021-45e8-85db-38872695a042'
+const userId = createUser();
 
 // L'URL de base de l'api est stocké dans baseUrl
-const baseUrl = `https://glo3102lab4.herokuapp.com/${userId}`;
+const baseUrl = `http://localhost:3000/${userId}`;
+
+function createUser(){
+  return fetch(`http://localhost:3000/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((response) => response.json())
+    .then((userId) => {
+      return userId
+    })
+    .catch(() => {
+      console.error("Unable to create user")
+    })
+}
 
 // Implémentation de la méthode GET avec `fetch`
 // Permet de lister les tâches

@@ -3,8 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="b00ecbad-eba2-4e94-a28d-1f7a65f4fa22" name="Default Changelist" comment="Caline il avait une erreur">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Labo4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Labo4/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/labo5/src/components/Homepage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/labo5/src/components/Homepage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labo7/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Labo7/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labo7/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Labo7/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labo7/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Labo7/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Labo7/src/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/Labo7/src/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo5/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/labo5/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo5/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/labo5/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo5/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/labo5/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo5/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/labo5/src/components/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo5/src/components/HomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/labo5/src/components/HomePage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo5/src/components/ToDoList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/labo5/src/components/ToDoList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo5/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/labo5/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labo5/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/labo5/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +24,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -33,11 +44,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab/Web-Laboratoire" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\JC\Documents\1-École\Dev Web\Web-Laboratoire\Labo7" />
       <recent name="C:\Users\vince\Documents\Ulaval\Web\Web-Laboratoire\Labo5\src" />
     </key>
   </component>
@@ -70,6 +83,9 @@
       <workItem from="1581713364038" duration="121000" />
       <workItem from="1582816300791" duration="1651000" />
       <workItem from="1582908034924" duration="1552000" />
+      <workItem from="1583082947383" duration="7671000" />
+      <workItem from="1583103850363" duration="3342000" />
+      <workItem from="1584645337607" duration="9728000" />
     </task>
     <task id="LOCAL-00001" summary="Caline il avait une erreur">
       <created>1580596514313</created>
@@ -94,10 +110,32 @@
     </state>
     <state x="380" y="16" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1581523022134" />
     <state x="380" y="31" key="CommitChangelistDialog2/0.0.1536.864/-1920.97.1920.1080@0.0.1536.864" timestamp="1580596513790" />
-    <state x="548" y="155" key="FileChooserDialogImpl" timestamp="1582817907313">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="548" y="163" key="FileChooserDialogImpl" timestamp="1583107193160">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="548" y="155" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1582817907313" />
+    <state x="548" y="163" key="FileChooserDialogImpl/0.0.1536.864/-1920.78.1920.1080@0.0.1536.864" timestamp="1583107193160" />
+    <state x="548" y="163" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1583084710675" />
+    <state width="1515" height="223" key="GridCell.Tab.0.bottom" timestamp="1583100921860">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1515" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864/-1920.78.1920.1080@0.0.1536.864" timestamp="1583100921860" />
+    <state width="1515" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1583083263141" />
+    <state width="1515" height="223" key="GridCell.Tab.0.center" timestamp="1583100921860">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1515" height="223" key="GridCell.Tab.0.center/0.0.1536.864/-1920.78.1920.1080@0.0.1536.864" timestamp="1583100921860" />
+    <state width="1515" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1583083263141" />
+    <state width="1515" height="223" key="GridCell.Tab.0.left" timestamp="1583100921859">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1515" height="223" key="GridCell.Tab.0.left/0.0.1536.864/-1920.78.1920.1080@0.0.1536.864" timestamp="1583100921859" />
+    <state width="1515" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1583083263141" />
+    <state width="1515" height="223" key="GridCell.Tab.0.right" timestamp="1583100921860">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1515" height="223" key="GridCell.Tab.0.right/0.0.1536.864/-1920.78.1920.1080@0.0.1536.864" timestamp="1583100921860" />
+    <state width="1515" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1583083263141" />
     <state x="148" y="78" key="MergeDialog" timestamp="1580596461011">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -110,9 +148,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582816774756" />
-    <state x="578" y="353" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580596503466">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="578" y="337" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584655206947">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="353" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864/-1920.97.1920.1080@0.0.1536.864" timestamp="1580596503466" />
+    <state x="578" y="337" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.-66.1920.1030/-1920.-61.1920.1040/0.0.1536.824@0.0.1536.824" timestamp="1584655206947" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1583085009099">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1583085009099" />
   </component>
 </project>
