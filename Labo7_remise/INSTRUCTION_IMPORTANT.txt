@@ -1,0 +1,20 @@
+Bonjour Med,
+
+Voici notre remise du labo7. La lecture de ce document est très important puisqu'il t'aidera 
+à contourner les petites coquilles du lab. Voici les instructions en quelques étapes simples.
+
+1) Ouvrir le dossier labo7_server et exécuter $npm install node et $node index.js dans le terminal.
+
+2) Ouvrir le dossier labo7_client.
+
+3) Aller sur Postman, faire un POST avec le url suivant: http://localhost:3000/users
+
+4) Récupérer le id et le copier à la ligne 3 du document api.js dans le dossier labo7_client.
+
+4) Dans le terminal du dossier labo7_client, exécuter les commandes $npm install et $npm start.
+
+5) IMPORTANT, la première création de tâche n'apparait pas, il faut refresh la page!
+
+6) Enjoy!
+
+ 

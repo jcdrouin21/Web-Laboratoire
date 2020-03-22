@@ -4,16 +4,18 @@
             <h2 id="greetingTitle"> The Ultimate Task Manager </h2>
         </div>
         <div>
-            <label for="inputTask"/><textarea rows="8" cols="12" id="inputTask" placeholder="Entrer Vos Tâches..."/>
+            <label for="inputTask"/><textarea rows="10" cols="12" id="inputTask" placeholder="Entrez Vos Tâches..."/>
         </div>
         <div id="buttons">
             <button v-on:click="addTask" type="submit">Ajouter</button>
-            <button v-on:click="modifyTask" type="submit" :disabled="isDisabled">Modifier</button>
+            <button v-on:click="modifyTask" type="submit" :disabled="isDisabled" >Modifier</button>
             <button v-on:click="deleteTask" type="submit" :disabled="isDisabled">Supprimer</button>
         </div>
-        <div id="tasksList"></div>
+        <ul id="tasksList"></ul>
+
     </div>
 </template>
+
 
 <script>
     export default {
@@ -76,11 +78,15 @@
                         let results = JSON.parse(result).tasks;
                         for (let i = 0; i < results.length; i++) {
                             console.log(JSON.stringify(results[i].id));
-                            document.getElementById("tasksList").innerHTML += "<div class='taskName' v-on:click='selectTask(" + JSON.stringify(results[i].id) + ", " + JSON.stringify(results[i].name) + ")' name='" + results[i].id + "'>" + results[i].name + "</div>";
+                            document.getElementById("tasksList").innerHTML += "<div class='taskName' onclick='selectTask(" + JSON.stringify(results[i].id) + ", " + JSON.stringify(results[i].name) + ")' name='" + results[i].id + "'>" + results[i].name + "</div>"
 
                         }
+
                     })
                     .catch(error => console.log('error', error));
+
+
+
             },
             modifyTask() {
                 let task = document.getElementById("inputTask").value;
@@ -120,6 +126,9 @@
                 this.selectedTaskId = taskId;
                 document.getElementById("inputTask").value = taskName;
                 this.isDisabled = false;
+            },
+            conso(){
+                console.log("sa marche");
             }
         }
     }
