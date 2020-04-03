@@ -1,0 +1,41 @@
+<html>
+<head>
+    <script>
+        function login() {
+            let username = document.getElementById('usernameInput').value;
+            let password = document.getElementById('passwordInput').value;
+
+            if (username !== '' && password !== '') {
+                let req = new XMLHttpRequest();
+                req.open('POST', '/login');
+                req.setRequestHeader('Content-Type', 'application/json');
+
+                req.onload = function() {
+                    if (req.status == 200) {
+                        window.location.replace('/profile');
+                    } else if (req.status === 401) {
+                        document.getElementById('loginFailedMessage').style.visibility = unset;
+                    }
+                };
+
+                req.send(JSON.stringify({username: username, password: password}));
+            }
+        };
+    </script>
+</head>
+<body>
+<div>
+    <h2>Please Login.</h2>
+    <div>
+        <label>Username: </label>
+        <input id="usernameInput">
+    </div>
+    <div>
+        <label>Password: </label>
+        <input id="passwordInput" type="password">
+    </div>
+    <button id="loginBtn" onclick="login()">Login</button>
+    <span id="loginFailedMessage" style="visibility: hidden">Password or username invalid</span>
+</div>
+</body>
+</html>
