@@ -1,0 +1,45 @@
+<html>
+<head>
+    <script>
+        function register() {
+            let username = document.getElementById('registerUsernameInput').value;
+            let password = document.getElementById('registerPasswordInput').value;
+
+            if (username !== '' && password !== '') {
+                let req = new XMLHttpRequest();
+                req.open('POST', '/register');
+                req.setRequestHeader('Content-Type', 'application/json');
+
+                req.onload = function() {
+                    if (req.status === 200) {
+                        window.location.replace('/userprofile');
+                    } else if (req.status === 401) {
+                        document.getElementById('registerFailedMessage').style.visibility = "unset";
+                    }
+                };
+
+                req.send(JSON.stringify({username: username, password: password}));
+            }
+        };
+    </script>
+</head>
+<body style="margin: 0px 0px 0px 0px; background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(0, 0, 0, 1)), url('https://upload.wikimedia.org/wikipedia/en/4/4a/Lakelouiscanada.jpg'); background-position: right; background-size: contain;">
+<div style="width: 35%; height: 100%; background-color: white">
+    <div style="padding: 60px 40px 0px 40px;">
+        <h1>Welcome!</h1>
+        <h2 style="margin-top: -10px">Please register.</h2>
+        <div style="margin: 30px 0px 20px 0px">
+            <label>Username</label>
+            <input id="registerUsernameInput" type="text" style="width: 100%; height: 40px; padding-left: 5px; display: inline-block; border: 1px solid #cccccc; border-radius: 4px; box-sizing: border-box">
+        </div>
+        <div style="margin-bottom: 40px">
+            <label>Password</label>
+            <input id="registerPasswordInput" type="password" style="width: 100%; height: 40px; padding-left: 5px; display: inline-block; border: 1px solid #cccccc; border-radius: 4px; box-sizing: border-box">
+        </div>
+        <button type="submit" id="registerBtn" onclick="register()" style="width: 100%; height: 40px; background-color: #2c3e50; color: white; cursor: pointer; display: inline-block; border: 1px solid #cccccc; border-radius: 4px; box-sizing: border-box; margin-bottom: 20px">Register</button>
+        <p style="text-align: center; color: #2c3e50">Already have an account? <a href="login" style="text-decoration: underline">Login</a></p>
+        <span id="registerFailedMessage" style="visibility: hidden; text-align: center">This username already exists. Please, try again!</span>
+    </div>
+</div>
+</body>
+</html>

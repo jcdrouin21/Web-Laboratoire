@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const uuid = require('uuid/v4');
+const { uuid } = require('uuidv4');
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -18,29 +18,39 @@ app.get('/', (req, res) => res.send('Hello World'));
 
 app.get('/login', (req, res) => res.render('login.ejs'));
 
+app.get('/register', (req, res) => res.render('register.ejs'));
+
 const validate = (token, username) => {
     return !!token &&
         !!username &&
         !!users[username] &&
         users[username].token === token;
-}
-app.get('/profile', (req, res) => {
+};
+app.get('/userprofile', (req, res) => {
     const token = req.cookies.labtoken;
     let username;
     Object.keys(users).forEach( (name) => {
-        if (users[name].token === token) username = name
+        if (users[name].token === token) {
+            username = name;
+        }
     });
     if (!validate(token, username)) {
-        res.status(401).redirect('/login')
+        res.status(401).redirect('/login');
         return;
     }
-    res.render('userProfile.ejs', {username})
+    res.render('userProfile.ejs', {username});
 });
 
-app.post('/users', (req, res) => {
+app.post('/register', (req, res) => {
     const { username, password } = req.body;
-    users[username] = {username: username, password: password};
-    res.sendStatus(204);
+    if(!(username in users)) {
+        users[username] = {username: username, password: password};
+        const token = uuid();
+        users[username].token = token;
+        res.cookie('labtoken', token).status(200).redirect('/userprofile');
+        return;
+    }
+    res.status(401).send("This username already exists.")
 });
 
 app.post('/login', (req, res) => {
@@ -48,13 +58,13 @@ app.post('/login', (req, res) => {
     if (!!users[username] && users[username].password === password) {
         const token = uuid();
         users[username].token = token;
-        res.cookie('labtoken', token).status(200).redirect('/profile');
+        res.cookie('labtoken', token).status(200).redirect('/userprofile');
         return;
     }
-    res.status(401).send("Password or username invalid");
+    res.status(401).send("Password or username invalid.");
 });
 
 
-app.listen(port, () => console.log(`Listening on port : ${port}`))
+app.listen(port, () => console.log(`Listening on port : ${port}`));
 
 
