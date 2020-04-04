@@ -18,7 +18,7 @@ app.get('/', (req, res) => res.send('Hello World'));
 
 app.get('/login', (req, res) => res.render('login.ejs'));
 
-app.get('/register', (req, res) => res.render('register.ejs'));
+app.get('/users', (req, res) => res.render('register.ejs'));
 
 const validate = (token, username) => {
     return !!token &&
@@ -41,7 +41,7 @@ app.get('/userprofile', (req, res) => {
     res.render('userProfile.ejs', {username});
 });
 
-app.post('/register', (req, res) => {
+app.post('/users', (req, res) => {
     const { username, password } = req.body;
     if(!(username in users)) {
         users[username] = {username: username, password: password};
