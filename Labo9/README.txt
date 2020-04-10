@@ -1,0 +1,3 @@
+- Run npm install
+- démarrer avec node index.js
+- Aller au localhost:3000/chat
