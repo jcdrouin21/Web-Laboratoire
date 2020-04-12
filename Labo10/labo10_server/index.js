@@ -3,6 +3,12 @@ const bodyParser = require('body-parser');
 const User = require('./user.js');
 const Task = require('./task.js');
 const mongoose = require('mongoose');
+const cors = require('cors');
+const corsOptions = {
+    origin: '*',
+    methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'UPDATE'],
+    credentials: true
+};
 
 const port = process.env.PORT || 3000;
 const db_port = process.env.DB_ENV || 27017;
@@ -11,9 +17,9 @@ mongoose.connect(`mongodb://localhost:${db_port}/${collection_name}`, {useNewUrl
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors(corsOptions));
 
-app.get('/', (req, res) => res.send("TEST"));
-
+app.get('/', (req, res) => res.send("Welcome to Lab 10."));
 
 app.post('/users', (req, res) => {
     const user = new User();
@@ -77,12 +83,12 @@ app.put('/:userId/tasks/:taskId', async (req, res) => {
         if(!!error)
             return res.sendStatus(503);
         task.name = newName;
-        task.save((error, _task => {
+        task.save((error, _task) => {
             if(!!error)
                 return res.sendStatus(503);
             console.log('updated task: ' + taskId);
             return res.status(200).send(JSON.stringify(task.toDTO()))
-        }));
+        });
     })
 });
 
